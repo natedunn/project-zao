@@ -1,0 +1,16 @@
+{
+  "name": "next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.5.0",
+    "next": "^12.1.0",
+    "react": "^18.0.0-rc.2",
+    "react-dom": "^18.0.0-rc.2"
+  }
+}
