@@ -1,14 +1,13 @@
-import React, { lazy } from 'react';
-import dynamic from 'next/dynamic';
+import React, { lazy } from "react";
+import dynamic from "next/dynamic";
 
 export default function RenderComponents({ layout }) {
-  console.log(layout);
   //
   const renderComponent = (item) => {
     const component = dynamic(() => import(`./${item.component}`));
     const { children, ...props } = item.props;
     const renderChildren = (children) => {
-      if (typeof children === 'object') {
+      if (typeof children === "object") {
         return renderComponent(children);
       }
       return children;
@@ -16,6 +15,7 @@ export default function RenderComponents({ layout }) {
     if (component)
       return React.createElement(component, {
         ...props,
+        key: item?.key,
         children: renderChildren(children),
       });
     return null;

@@ -1,8 +1,8 @@
-import React from 'react';
-import Paragraph from '../components/Paragraph';
-import Heading from '../components/Heading';
-import RenderComponents from '../components/RenderComponents';
-import Box from '../components/Box';
+import React from "react";
+import Paragraph from "../components/Paragraph";
+import Heading from "../components/Heading";
+import RenderComponents from "../components/RenderComponents";
+import Box from "../components/Box";
 
 export default function Home({ componentLayout, test }) {
   return (
@@ -16,34 +16,38 @@ export default function Home({ componentLayout, test }) {
 export async function getStaticProps(context) {
   const componentLayout = [
     {
-      component: 'Heading',
+      component: "Heading",
       props: {
-        children: 'Test Page',
+        children: "Test Page",
       },
+      key: "ljaflksd",
     },
     {
-      component: 'Paragraph',
+      component: "Paragraph",
       props: {
-        children: 'Hello World',
+        children: "Hello World",
       },
+      key: "nhienasd",
     },
     {
-      component: 'Box',
+      component: "Box",
       props: {
-        borderColor: 'red',
+        borderColor: "red",
         children: {
-          component: 'Toggle',
+          component: "Toggle",
           props: {
-            text: 'Another Paragraph',
+            text: "Switch",
           },
+          key: "asdasd",
         },
       },
+      key: "ioouqwnv",
     },
   ];
 
   return {
     props: {
-      test: 'Testing Things',
+      test: "Testing Things",
       componentLayout,
     },
   };
