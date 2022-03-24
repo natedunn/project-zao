@@ -7,7 +7,7 @@ import Box from "../components/Box";
 export default function Home({ componentLayout, test }) {
   return (
     <div>
-      <h1>{test}</h1>
+      <h1>This is: {test}!</h1>
       <RenderComponents layout={componentLayout} />
     </div>
   );
