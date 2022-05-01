@@ -1,4 +1,4 @@
-export default function Box({ children, borderColor = 'black' }) {
+export default function Box({ children, borderColor = "black" }) {
   return (
     <div
       style={{
