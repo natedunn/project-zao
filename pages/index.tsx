@@ -1,100 +1,22 @@
-import RenderComponents from "../components/RenderComponents";
+import RenderComponents from "../components/app/RenderComponents";
 
-export default function Home({ test }) {
-  const componentLayout = [
-    {
-      component: "Heading",
-      props: {
-        children: "Test Page",
-      },
-      key: "ljaflksd",
-    },
-    {
-      component: "Paragraph",
-      props: {
-        children: "Hello World",
-      },
-      key: "nhienasd",
-    },
-    {
-      component: "Box",
-      props: {
-        borderColor: "red",
-        children: {
-          component: "Toggle",
-          props: {
-            text: "Switch",
-          },
-          key: "asdasd",
-        },
-      },
-      key: "ioouqwnv",
-    },
-    {
-      component: "Button",
-      props: {
-        children: "Click Me",
-        onClick: () => alert("Clicked"),
-        className:
-          "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded",
-      },
-      key: "asdfasdf",
-    },
-  ];
+export default function Home({ pageLayout, test }) {
   return (
     <div>
-      <h1 className="text-3xl text-red-500">{test}</h1>
-      <RenderComponents layout={componentLayout} name="body" />
+      <RenderComponents layout={pageLayout} name="body" />
     </div>
   );
 }
 
-// export async function getStaticProps(context) {
-//   const componentLayout = [
-//     {
-//       component: "Heading",
-//       props: {
-//         children: "Test Page",
-//       },
-//       key: "ljaflksd",
-//     },
-//     {
-//       component: "Paragraph",
-//       props: {
-//         children: "Hello World",
-//       },
-//       key: "nhienasd",
-//     },
-//     {
-//       component: "Box",
-//       props: {
-//         borderColor: "red",
-//         children: {
-//           component: "Toggle",
-//           props: {
-//             text: "Switch",
-//           },
-//           key: "asdasd",
-//         },
-//       },
-//       key: "ioouqwnv",
-//     },
-//     {
-//       component: "Button",
-//       props: {
-//         children: "Click Me",
-//         onClick: async () => alert("Clicked"),
-//         className:
-//           "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded",
-//       },
-//       key: "asdfasdf",
-//     },
-//   ];
+export async function getServerSideProps() {
+  const { data: pageLayout } = await fetch(
+    "http://localhost:3000/api/pageLayoutExample"
+  ).then((res) => res.json());
 
-//   return {
-//     props: {
-//       test: "Testing Things",
-//       componentLayout,
-//     },
-//   };
-// }
+  return {
+    props: {
+      test: "Testing Things",
+      pageLayout,
+    },
+  };
+}
