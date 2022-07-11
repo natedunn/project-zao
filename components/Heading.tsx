@@ -11,17 +11,17 @@ function Heading({ children, className }: Props) {
 
 const register = {
   component: Heading,
-  title: "Heading",
-  description: "A heading component",
-  key: "heading",
+  title: 'Heading',
+  description: 'A heading component',
+  key: 'heading',
   props: [
     {
-      name: "children",
-      title: "Children",
-      description: "The text to display",
-      type: "string",
+      name: 'children',
+      title: 'Children',
+      description: 'The text to display',
+      type: 'string',
       required: true,
-      input: "text",
+      input: 'text',
     },
   ],
 };

@@ -1,4 +1,4 @@
-import Playground from "./Playground";
+import Playground from './Playground';
 
 export default function BuilderPage({ id, pageLayout }) {
   return (
@@ -11,9 +11,9 @@ export default function BuilderPage({ id, pageLayout }) {
 export async function getServerSideProps({ params }) {
   const { id } = params;
   // Let's pretend we have queried the db for information
-  const { data: pageLayout } = await fetch(
-    "http://localhost:3000/api/pageLayoutExample"
-  ).then((res) => res.json());
+  const { data: pageLayout } = await fetch('http://localhost:3000/api/pageLayoutExample').then(
+    (res) => res.json()
+  );
 
   return {
     props: {

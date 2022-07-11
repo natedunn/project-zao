@@ -1,6 +1,6 @@
-import React, { lazy, Fragment } from "react";
+import React, { lazy, Fragment } from 'react';
 // import dynamic from "next/dynamic";
-import * as manifest from "../manifest";
+import * as manifest from '../manifest';
 
 export default function RenderComponents({ layout, name = null }) {
   // Map through list of components to render
@@ -27,20 +27,13 @@ export default function RenderComponents({ layout, name = null }) {
             ...layout[child],
             renderChild: true,
           };
-          return (
-            <Fragment key={layout[child].key}>
-              {renderComponent(newChild)}
-            </Fragment>
-          );
+          return <Fragment key={layout[child].key}>{renderComponent(newChild)}</Fragment>;
         });
       }
       return children;
     };
 
-    if (
-      (component && !item.parentKey) ||
-      (component && item.parentKey && item?.renderChild)
-    ) {
+    if ((component && !item.parentKey) || (component && item.parentKey && item?.renderChild)) {
       return React.createElement(component, {
         ...checkIfChildren(props),
         key: item?.key,

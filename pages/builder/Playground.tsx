@@ -1,8 +1,8 @@
 // TODO: Add type for component structure to replace any
-import { Fragment, useState } from "react";
-import * as componentList from "../../components/manifest";
-import RenderOption from "../../components/app/RenderOption";
-import RenderComponents from "../../components/app/RenderComponents";
+import { Fragment, useState } from 'react';
+import * as componentList from '../../components/manifest';
+import RenderOption from '../../components/app/RenderOption';
+import RenderComponents from '../../components/app/RenderComponents';
 
 export default function Playground({ pageId, pageLayout: initialPageLayout }) {
   const manifest = componentList?.default as any;
@@ -39,10 +39,10 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
             const prop = key;
             const value = item?.props[key];
             return (
-              <li className="pl-6 mt-2" key={`${item.key}-${prop}-${index}`}>
+              <li className='pl-6 mt-2' key={`${item.key}-${prop}-${index}`}>
                 <input
-                  className="text-black"
-                  type="text"
+                  className='text-black'
+                  type='text'
                   defaultValue={value}
                   onChange={(e) =>
                     changeLayoutByKey({
@@ -56,7 +56,7 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
             );
           })}
         </ul>
-        <ul className="pl-6 list-disc list-inside">
+        <ul className='pl-6 list-disc list-inside'>
           {/* {Array.isArray(item?.props?.children)
             ? item?.props.children.map((child) => {
                 return (
@@ -64,7 +64,7 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
                 );
               })
             : null} */}
-          {item?.props?.children && typeof item?.props?.children === "object"
+          {item?.props?.children && typeof item?.props?.children === 'object'
             ? Object.keys(item?.props?.children).map((key, index) =>
                 createLayout(item?.props?.children[key])
               )
@@ -78,20 +78,18 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
   //
   // Return
   return (
-    <section className="w-full bg-slate-300">
-      <div className="p-4 text-center bg-slate-300">
+    <section className='w-full bg-slate-300'>
+      <div className='p-4 text-center bg-slate-300'>
         <h1>Building page: {pageId}.</h1>
       </div>
-      <div className="flex h-full">
-        <div className="flex-auto bg-white">
-          {pageLayout ? (
-            <RenderComponents layout={pageLayout} name="playground-preview" />
-          ) : null}
+      <div className='flex h-full'>
+        <div className='flex-auto bg-white'>
+          {pageLayout ? <RenderComponents layout={pageLayout} name='playground-preview' /> : null}
         </div>
-        <div className="w-full max-w-md bg-slate-900 text-white h-[100vh] flex flex-col gap-10">
+        <div className='w-full max-w-md bg-slate-900 text-white h-[100vh] flex flex-col gap-10'>
           <div>
-            <div className="p-3">
-              <h3 className="font-bold">Available Components</h3>
+            <div className='p-3'>
+              <h3 className='font-bold'>Available Components</h3>
             </div>
             {/* {Object.keys(manifest)?.map((key) => {
               const component = manifest[key];
@@ -103,13 +101,11 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
             })} */}
           </div>
           <div>
-            <div className="p-3">
-              <h3 className="font-bold">Layers</h3>
-              <ul className="list-disc list-inside">
+            <div className='p-3'>
+              <h3 className='font-bold'>Layers</h3>
+              <ul className='list-disc list-inside'>
                 {Object.keys(pageLayout)?.map((key, index) => (
-                  <Fragment key={pageLayout[key]?.key}>
-                    {createLayout(pageLayout[key])}
-                  </Fragment>
+                  <Fragment key={pageLayout[key]?.key}>{createLayout(pageLayout[key])}</Fragment>
                 ))}
               </ul>
             </div>

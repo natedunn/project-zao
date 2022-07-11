@@ -1,10 +1,10 @@
-function Box({ children, borderColor = "gray" }) {
+function Box({ children, borderColor = 'gray' }) {
   return (
     <div
       style={{
         border: `1px solid ${borderColor}`,
-        borderRadius: "4px",
-        padding: "8px",
+        borderRadius: '4px',
+        padding: '8px',
       }}
     >
       {children}
@@ -14,17 +14,17 @@ function Box({ children, borderColor = "gray" }) {
 
 const register = {
   component: Box,
-  title: "Box",
-  description: "A box component",
-  key: "box",
+  title: 'Box',
+  description: 'A box component',
+  key: 'box',
   props: [
     {
-      name: "children",
-      title: "Children",
-      description: "The text to display",
-      type: "string",
+      name: 'children',
+      title: 'Children',
+      description: 'The text to display',
+      type: 'string',
       required: true,
-      input: "text",
+      input: 'text',
     },
   ],
 };

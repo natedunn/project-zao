@@ -1,6 +1,6 @@
 export const register = {
-  title: "Posts",
-  description: "A posts component",
+  title: 'Posts',
+  description: 'A posts component',
 };
 
 export default function Posts({ posts, query }) {
