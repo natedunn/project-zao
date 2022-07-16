@@ -1,4 +1,4 @@
-import Playground from './Playground';
+import Playground from '../../components/app/Playground';
 
 export default function BuilderPage({ id, pageLayout }) {
   return (

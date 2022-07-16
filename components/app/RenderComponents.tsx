@@ -1,8 +1,8 @@
-import React, { lazy, Fragment } from 'react';
-// import dynamic from "next/dynamic";
+import React, { Fragment } from 'react';
 import * as manifest from '../manifest';
+import EditWrapper from './EditWrapper';
 
-export default function RenderComponents({ layout, name = null }) {
+export default function RenderComponents({ layout, name = null, editMode = false }) {
   // Map through list of components to render
   const renderComponent = (item) => {
     const registration = manifest?.default?.[item.component];
@@ -17,10 +17,6 @@ export default function RenderComponents({ layout, name = null }) {
     };
 
     const renderChildren = (children) => {
-      // if (typeof children === "string") return children;
-      // return Object.keys(children).map((key, index) => {
-      //   return renderComponent(children[key]);
-      // });
       if (Array.isArray(children)) {
         return children.map((child) => {
           const newChild = {
@@ -34,11 +30,22 @@ export default function RenderComponents({ layout, name = null }) {
     };
 
     if ((component && !item.parentKey) || (component && item.parentKey && item?.renderChild)) {
-      return React.createElement(component, {
-        ...checkIfChildren(props),
-        key: item?.key,
-        children: props?.children ? renderChildren(props?.children) : null,
-      });
+      const Wrapper = editMode ? EditWrapper : Fragment;
+      // const Component = component || null;
+      return (
+        <Wrapper>
+          {/* <Component
+            {...checkIfChildren(props)}
+            key={item?.key}
+            children={props?.children ? renderChildren(props?.children) : null}
+          /> */}
+          {React.createElement(component, {
+            ...checkIfChildren(props),
+            key: item?.key,
+            children: props?.children ? renderChildren(props?.children) : null,
+          })}
+        </Wrapper>
+      );
     }
     return null;
   };

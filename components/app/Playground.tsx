@@ -1,8 +1,8 @@
 // TODO: Add type for component structure to replace any
 import { Fragment, useState } from 'react';
-import * as componentList from '../../components/manifest';
-import RenderOption from '../../components/app/RenderOption';
-import RenderComponents from '../../components/app/RenderComponents';
+import * as componentList from '../manifest';
+import RenderOption from './RenderOption';
+import RenderComponents from './RenderComponents';
 
 export default function Playground({ pageId, pageLayout: initialPageLayout }) {
   const manifest = componentList?.default as any;
@@ -57,13 +57,6 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
           })}
         </ul>
         <ul className='pl-6 list-disc list-inside'>
-          {/* {Array.isArray(item?.props?.children)
-            ? item?.props.children.map((child) => {
-                return (
-                  <Fragment key={child.key}>{createLayout(child)}</Fragment>
-                );
-              })
-            : null} */}
           {item?.props?.children && typeof item?.props?.children === 'object'
             ? Object.keys(item?.props?.children).map((key, index) =>
                 createLayout(item?.props?.children[key])
@@ -84,21 +77,15 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
       </div>
       <div className='flex h-full'>
         <div className='flex-auto bg-white'>
-          {pageLayout ? <RenderComponents layout={pageLayout} name='playground-preview' /> : null}
+          {pageLayout ? (
+            <RenderComponents editMode={true} layout={pageLayout} name='playground-preview' />
+          ) : null}
         </div>
         <div className='w-full max-w-md bg-slate-900 text-white h-[100vh] flex flex-col gap-10'>
           <div>
             <div className='p-3'>
               <h3 className='font-bold'>Available Components</h3>
             </div>
-            {/* {Object.keys(manifest)?.map((key) => {
-              const component = manifest[key];
-              return (
-                <div key={`component-${component.key}`}>
-                  <RenderOption title={component.title} />
-                </div>
-              );
-            })} */}
           </div>
           <div>
             <div className='p-3'>
