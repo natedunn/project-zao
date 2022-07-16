@@ -4,7 +4,7 @@ function Box({ children, borderColor = 'gray' }) {
       style={{
         border: `1px solid ${borderColor}`,
         borderRadius: '4px',
-        padding: '8px',
+        padding: '18px',
       }}
     >
       {children}

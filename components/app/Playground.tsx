@@ -1,12 +1,14 @@
 // TODO: Add type for component structure to replace any
 import { Fragment, useState } from 'react';
 import * as componentList from '../manifest';
-import RenderOption from './RenderOption';
+import ComponentOptions from './ComponentOptions';
 import RenderComponents from './RenderComponents';
+import useStore from '../../utils/store';
 
 export default function Playground({ pageId, pageLayout: initialPageLayout }) {
-  const manifest = componentList?.default as any;
+  // const manifest = componentList?.default as any;
   const [pageLayout, setPageLayout] = useState(initialPageLayout);
+  const selected = useStore((state) => state.editor.selected);
 
   const changeLayoutByKey = ({ key, prop, value }) => {
     setPageLayout({
@@ -81,20 +83,26 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
             <RenderComponents editMode={true} layout={pageLayout} name='playground-preview' />
           ) : null}
         </div>
+
         <div className='w-full max-w-md bg-slate-900 text-white h-[100vh] flex flex-col gap-10'>
           <div>
             <div className='p-3'>
-              <h3 className='font-bold'>Available Components</h3>
+              <h3 className='font-bold'>Layers</h3>
             </div>
           </div>
           <div>
             <div className='p-3'>
-              <h3 className='font-bold'>Layers</h3>
-              <ul className='list-disc list-inside'>
+              <h3 className='font-bold'>Options</h3>
+              <h4>Editing: {pageLayout[selected]?.component}</h4>
+              <ComponentOptions
+                component={pageLayout[selected]}
+                changeLayoutByKey={changeLayoutByKey}
+              />
+              {/* <ul className='list-disc list-inside'>
                 {Object.keys(pageLayout)?.map((key, index) => (
                   <Fragment key={pageLayout[key]?.key}>{createLayout(pageLayout[key])}</Fragment>
                 ))}
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>
