@@ -21,10 +21,10 @@ const register = {
     {
       name: 'children',
       title: 'Children',
-      description: 'The text to display',
+      description: 'Box for other components to be placed inside of.',
       type: 'string',
       required: true,
-      input: 'text',
+      input: null,
     },
   ],
 };

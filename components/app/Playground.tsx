@@ -93,7 +93,6 @@ export default function Playground({ pageId, pageLayout: initialPageLayout }) {
           <div>
             <div className='p-3'>
               <h3 className='font-bold'>Options</h3>
-              <h4>Editing: {pageLayout[selected]?.component}</h4>
               <ComponentOptions
                 component={pageLayout[selected]}
                 changeLayoutByKey={changeLayoutByKey}
