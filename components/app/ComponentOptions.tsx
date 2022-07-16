@@ -25,13 +25,13 @@ export default function ComponentOptions({ component, changeLayoutByKey }: Props
         {info?.props.map((prop) => {
           const Input = prop.input || null;
           const value = component?.props?.[prop.name];
-
+          if (!Input) return <span className='italic text-sm'>No editable props to display</span>;
           return (
             <li key={`${component?.key}-${prop.name}`}>
               <div>{prop.title}</div>
               <div>{prop.description}</div>
               <div>
-                {prop.name in component.props && Input ? (
+                {prop.name in component.props ? (
                   <Input
                     defaultValue={value}
                     onChange={(e) =>
