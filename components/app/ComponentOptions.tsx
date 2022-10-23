@@ -6,7 +6,7 @@ type Props = {
     props: object;
     key: string;
   };
-  changeLayoutByKey: ({ key: string, prop: object, value: any }) => void;
+  changeLayoutByKey: ({}) => void;
 };
 
 export default function ComponentOptions({ component, changeLayoutByKey }: Props) {
@@ -16,7 +16,7 @@ export default function ComponentOptions({ component, changeLayoutByKey }: Props
 
   return (
     <div>
-      <div className='border-b-2 border-white mb-2 pb-2'>
+      <div className='pb-2 mb-2 border-b-2 border-white'>
         <div className='text-lg font-bold'>{component?.component}</div>
         <div className='text-sm italic'>{info?.description}</div>
       </div>
@@ -25,7 +25,7 @@ export default function ComponentOptions({ component, changeLayoutByKey }: Props
         {info?.props.map((prop) => {
           const Input = prop.input || null;
           const value = component?.props?.[prop.name];
-          if (!Input) return <span className='italic text-sm'>No editable props to display</span>;
+          if (!Input) return <span className='text-sm italic'>No editable props to display</span>;
           return (
             <li key={`${component?.key}-${prop.name}`}>
               <div>{prop.title}</div>
