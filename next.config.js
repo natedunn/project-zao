@@ -4,6 +4,9 @@ module.exports = async (phase, { defaultConfig }) => {
    */
   const nextConfig = {
     compress: true,
+    experimental: {
+      urlImports: ['https://cdn.skypack.dev'],
+    },
   };
   return nextConfig;
 };
