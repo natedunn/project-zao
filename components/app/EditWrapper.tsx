@@ -4,16 +4,17 @@ import useStore from '../../utils/store';
 
 type Props = {
   children: any; // TODO: fix this to allow key below
+  componentName: string;
 };
 
-export default function EditWrapper({ children }: Props) {
+export default function EditWrapper({ children, componentName }: Props) {
   const [isHovered, setIsHovered] = useState(false);
   const setHovered = useStore((state) => state.editor.setHovered);
   const setSelected = useStore((state) => state.editor.setSelected);
 
   return (
     <div
-      className='editor-wrapper relative'
+      className='relative editor-wrapper'
       onClick={(e) => {
         e.stopPropagation();
         setSelected(children.key);
@@ -38,8 +39,8 @@ export default function EditWrapper({ children }: Props) {
           }
         )}
       >
-        <div className='inline-block py-1 px-2 text-xs bg-blue-500 text-white rounded-t pointer-events-auto'>
-          Edit {children.key}
+        <div className='inline-block px-2 py-1 text-xs text-white bg-blue-500 rounded-t pointer-events-auto'>
+          Edit {componentName}
         </div>
       </div>
       {children}

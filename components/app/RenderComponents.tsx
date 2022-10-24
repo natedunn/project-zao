@@ -33,7 +33,7 @@ export default function RenderComponents({ layout, name = null, editMode = false
       const Wrapper = editMode ? EditWrapper : Fragment;
       // const Component = component || null;
       return (
-        <Wrapper key={item?.key}>
+        <Wrapper key={item?.key} componentName={item?.component}>
           {/* <Component
             {...checkIfChildren(props)}
             key={item?.key}
